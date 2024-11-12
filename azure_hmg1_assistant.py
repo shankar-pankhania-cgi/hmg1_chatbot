@@ -6,8 +6,8 @@ from openai import AzureOpenAI
 import streamlit as st
 
 client = AzureOpenAI(
-  azure_endpoint = st.secrets["aoai"]["AZURE_OPENAI_ENDPOINT"],
-  api_key= st.secrets["aoai"]["AZURE_OPENAI_API_KEY"],
+  azure_endpoint = st.secrets["AZURE_OPENAI_ENDPOINT"],
+  api_key= st.secrets["AZURE_OPENAI_API_KEY"],
   api_version="2024-05-01-preview"
 )
 
