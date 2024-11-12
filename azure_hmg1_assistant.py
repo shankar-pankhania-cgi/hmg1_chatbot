@@ -3,13 +3,11 @@ import json
 import requests
 import time
 from openai import AzureOpenAI
-from dotenv import load_dotenv
-
-load_dotenv()
+import streamlit as st
 
 client = AzureOpenAI(
-  azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT"),
-  api_key= os.getenv("AZURE_OPENAI_API_KEY"),
+  azure_endpoint = st.secrets["aoai"]["AZURE_OPENAI_ENDPOINT"],
+  api_key= st.secrets["aoai"]["AZURE_OPENAI_API_KEY"],
   api_version="2024-05-01-preview"
 )
 

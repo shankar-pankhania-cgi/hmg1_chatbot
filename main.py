@@ -2,8 +2,6 @@ import streamlit as st
 from azure_hmg1_assistant import process_message 
 from PIL import Image
 import base64
-from dotenv import load_dotenv
-load_dotenv()
 
 # load logos
 banner_logo = "cabinet_office_logo.png"
@@ -41,7 +39,7 @@ def main():
                 z-index: 999;
                 padding-top: 10px;
             }}  
-            
+
             logo-container {{
                 width: 100px;
                 height: 100px;
