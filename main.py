@@ -4,7 +4,7 @@ from PIL import Image
 import base64
 
 # load logos
-banner_logo = "cabinet_office_logo.png"
+banner_logo = "cgi_logo.png"
 
 # Convert images to base64 so they can be displayed with HTML in Streamlit
 def get_image_base64(image_path):
@@ -50,7 +50,7 @@ def main():
                 font-size: 32px;
                 font-weight: bold;
                 color: #ffffff;
-                background-color: #003a8c;
+                background-color: #cb092c;
                 padding: 10px;
                 text-align: center;
                 border-radius: 10px;
@@ -66,15 +66,15 @@ def main():
             }}
         </style>
 
-        <div class="fixed-header">
+        <div>
             <div class="logo-container">
-                <img src="data:image/png;base64,{banner_logo64}" style="max-height: 200px; max-width: 200px;">
+                <img src="data:image/png;base64,{banner_logo64}" style="max-height: 150px; max-width: 150px;">
             </div>
-            <hr style="width:100%; border: 1px solid #003a8c; margin: 20px 0;">
+            <hr style="width:100%; border: 1px solid #cb092c; margin: 20px 0;">
             <div class="title-box">
-                HMG Personal Security Controls
+                UK HR Diversity, Equity and Inclusion Policy
                 <br>
-                <span class="subtitle">AI-Powered Insights from HMG Personal Security Controls</span>
+                <span class="subtitle">AI-Powered Insights from UK HR Diversity, Equity and Inclusion Policy</span>
             </div>
         </div>
         """,
