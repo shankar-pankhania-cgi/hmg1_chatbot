@@ -15,19 +15,18 @@ def get_image_base64(image_path):
 banner_logo64 = get_image_base64(banner_logo)
 
 def handle_chat_prompt(prompt):
-    # Echo the user's prompt to the chat window
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant", avatar='cgi_avatar.jpg'):
         message_placeholder = st.empty()
         full_response = process_message(prompt)
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
  
 def main():
-    st.set_page_config(page_title="HMG Security Personal", layout="wide")
+    st.set_page_config(page_title="HMG1 Demo", layout="wide")
 
     st.markdown(
         f"""

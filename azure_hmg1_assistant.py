@@ -12,12 +12,11 @@ client = AzureOpenAI(
 )
 
 assistant = client.beta.assistants.create(
-  model="gpt-4o", # replace with model deployment name.
-  instructions="You are an expert customer service representative for the HMG Personal Security Controls. Use your knowledge base from the vector store to answer questions about HMG Personal Security Controls. You can also have a normal conversation with the user as well",
-  tools=[{"type":"file_search","file_search":{"ranking_options":{"ranker":"default_2024_08_21","score_threshold":0}}}],
-  tool_resources={"file_search":{"vector_store_ids":["vs_lXeuIICtA81N5LPRhFfpimMt"]}},
-  temperature=1,
-  top_p=1
+    model="gpt-4o",
+    instructions="You are an assistant that answers the users questions",
+    tools=[{"type": "file_search"}],
+    tool_resources={"file_search":{"vector_store_ids":["vs_zWOfI3HZgB77bohRLyDnGLEk"]}},
+    temperature=0.3
 )
 
 def process_message(content: str):
@@ -26,21 +25,12 @@ def process_message(content: str):
 
     # Add a user question to the thread
     message = client.beta.threads.messages.create(
-    thread_id=thread.id,
-    role="user",
-    content=content # Users prompt 
+        thread_id=thread.id,
+        role="user",
+        content=content # Users prompt 
     )
-
 
     # Run the thread
-    run = client.beta.threads.runs.create(
-    thread_id=thread.id,
-    assistant_id=assistant.id
-    )
-
-    thread = client.beta.threads.create()
-
-    # Run the thread for the result
     run = client.beta.threads.runs.create(
         thread_id=thread.id,
         assistant_id=assistant.id
