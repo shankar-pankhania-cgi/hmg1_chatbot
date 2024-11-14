@@ -2,6 +2,7 @@ import os
 import json
 import requests
 import time
+import re
 from openai import AzureOpenAI
 import streamlit as st
 
@@ -13,10 +14,11 @@ client = AzureOpenAI(
 
 assistant = client.beta.assistants.create(
     model="gpt-4o",
-    instructions="You are an assistant that answers the users questions",
-    tools=[{"type": "file_search"}],
+    instructions="You are an assistant that answers the users questions.",
+    tools=[{"type":"file_search"}],
     tool_resources={"file_search":{"vector_store_ids":["vs_zWOfI3HZgB77bohRLyDnGLEk"]}},
-    temperature=0.3
+    temperature=0.3,
+    top_p=0.5
 )
 
 def process_message(content: str):
@@ -52,5 +54,7 @@ def process_message(content: str):
             for content_item in message['content']:
                 if 'text' in content_item and 'value' in content_item['text']:
                     contents.append(content_item['text']['value'])
+    
+    cleaned_text = re.sub(r'\S*†source\S*', '', contents[0]).strip()
 
-    return contents[0]
+    return cleaned_text
