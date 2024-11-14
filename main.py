@@ -19,7 +19,7 @@ def handle_chat_prompt(prompt):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    with st.chat_message("assistant", avatar='cgi_avatar.jpg'):
+    with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = process_message(prompt)
         message_placeholder.markdown(full_response)
