@@ -55,6 +55,8 @@ def process_message(content: str):
                 if 'text' in content_item and 'value' in content_item['text']:
                     contents.append(content_item['text']['value'])
     
-    cleaned_text = re.sub(r'\S*†source\S*', '', contents[0]).strip()
+    cleaned_text = re.sub(r'【\d+:\d+†source】', '', contents[0]).strip()
+    # Removing any extra spaces that may result from replacement
+    cleaned_text = re.sub(r'\s+', ' ', cleaned_text)
 
     return cleaned_text
